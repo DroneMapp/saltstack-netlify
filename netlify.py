@@ -55,7 +55,7 @@ def aliases_present(name, access_token, site_id, aliases):
         }
 
     new_aliases = updated_aliases - current_aliases
-    response = patch(site_path, {"domain_aliases": updated_aliases})
+    response = patch(site_path, {"domain_aliases": list(updated_aliases)})
     try:
         response.raise_for_status()
     except HTTPError as ex:
